@@ -47,7 +47,7 @@ INSTALLED_APPS = [
 
     "companies",
     "ingestion",
-    "emissions",
+    "records",
     "reviews",
     "audit",
 ]
