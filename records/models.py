@@ -80,3 +80,13 @@ class NormalizedRecord(models.Model):
 
     def __str__(self):
         return f"{self.activity_type} - {self.quantity}"
+    
+#No edit allowed if record is locked (approved)
+    def save(self, *args, **kwargs):
+        if self.pk:
+            existing = NormalizedRecord.objects.get(pk=self.pk)
+
+            if existing.locked:
+                raise ValueError("Approved records cannot be modified.")
+
+        super().save(*args, **kwargs)
