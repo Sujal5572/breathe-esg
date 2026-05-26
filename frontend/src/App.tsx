@@ -1,13 +1,7 @@
-function App() {
-  return (
-    <div style={{ padding: "20px" }}>
-      <h1>Breathe ESG Platform</h1>
+import ReviewQueuePage from "./pages/ReviewQueuePage";
 
-      <p>
-        ESG ingestion and analyst review system
-      </p>
-    </div>
-  );
+function App() {
+  return <ReviewQueuePage />;
 }
 
 export default App;
