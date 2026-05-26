@@ -5,8 +5,39 @@ from django.utils import timezone
 
 
 class NormalizedRecordListView(generics.ListAPIView):
-    queryset = NormalizedRecord.objects.all().order_by("-created_at")
     serializer_class = NormalizedRecordSerializer
+
+    def get_queryset(self):
+        queryset = NormalizedRecord.objects.all().order_by(
+            "-created_at"
+        )
+
+        organization_id = self.request.GET.get(
+            "organization_id"
+        )
+
+        suspicious = self.request.GET.get("suspicious")
+
+        review_status = self.request.GET.get(
+            "review_status"
+        )
+
+        if organization_id:
+            queryset = queryset.filter(
+                organization_id=organization_id
+            )
+
+        if suspicious == "true":
+            queryset = queryset.filter(
+                suspicious=True
+            )
+
+        if review_status:
+            queryset = queryset.filter(
+                review_status=review_status
+            )
+
+        return queryset
 
 
 class NormalizedRecordDetailView(generics.RetrieveAPIView):
