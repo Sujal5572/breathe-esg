@@ -147,24 +147,30 @@ function ReviewQueuePage() {
               </td>
 
               <td>
-                <button
-                  onClick={() =>
-                    approveRecord(record.id)
-                  }
-                >
-                  Approve
-                </button>
+                {record.review_status === "pending" ? (
+                  <>
+                    <button
+                      onClick={() =>
+                        approveRecord(record.id)
+                      }
+                    >
+                      Approve
+                    </button>
 
-                <button
-                  onClick={() =>
-                    rejectRecord(record.id)
-                  }
-                  style={{
-                    marginLeft: "10px",
-                  }}
-                >
-                  Reject
-                </button>
+                    <button
+                      onClick={() =>
+                        rejectRecord(record.id)
+                      }
+                      style={{
+                        marginLeft: "10px",
+                      }}
+                    >
+                      Reject
+                    </button>
+                  </>
+                ) : (
+                  <span>Completed</span>
+                )}
               </td>
             </tr>
           ))}
