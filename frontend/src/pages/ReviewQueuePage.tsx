@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import apiClient from "../../api/client";
+import FileUpload from "../components/FileUpload";
 
 interface RecordItem {
   id: number;
@@ -73,6 +74,7 @@ function ReviewQueuePage() {
   return (
     <div style={{ padding: "20px" }}>
       <h1>Review Queue</h1>
+      <FileUpload />
       <div style={{ marginBottom: "20px" }}>
           <button onClick={() => setFilter("all")}>
             All
