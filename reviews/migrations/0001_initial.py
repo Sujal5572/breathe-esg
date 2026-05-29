@@ -10,22 +10,19 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('companies', '0002_remove_organization_created_at_and_more'),
+        ('records', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='AuditLog',
+            name='ReviewDecision',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('entity_type', models.CharField(max_length=100)),
-                ('entity_id', models.IntegerField()),
-                ('action', models.CharField(max_length=100)),
-                ('before_data', models.JSONField(blank=True, null=True)),
-                ('after_data', models.JSONField(blank=True, null=True)),
+                ('action', models.CharField(choices=[('approve', 'Approve'), ('reject', 'Reject')], max_length=20)),
+                ('comment', models.TextField(blank=True, null=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('organization', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='audit_logs', to='companies.organization')),
+                ('normalized_record', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='review_decisions', to='records.normalizedrecord')),
                 ('performed_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
             ],
         ),
