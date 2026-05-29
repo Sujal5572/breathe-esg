@@ -30,9 +30,7 @@ SECRET_KEY = 'django-insecure-@b27=sjyleo0$u0urnbw+e2=+q4(7ene^t@^gn9%9czwg+m&()
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "breathe-esg-5ix4.onrender.com",
-    "localhost",
-    "127.0.0.1",
+    "*"
 ]
 CSRF_TRUSTED_ORIGINS = [
     "https://breathe-esg-5ix4.onrender.com",
