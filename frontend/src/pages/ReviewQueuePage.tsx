@@ -74,7 +74,7 @@ function ReviewQueuePage() {
   return (
     <div style={{ padding: "20px" }}>
       <h1>Review Queue</h1>
-      <FileUpload />
+      <FileUpload/>
       <div style={{ marginBottom: "20px" }}>
           <button onClick={() => setFilter("all")}>
             All
